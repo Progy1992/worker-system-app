@@ -1,0 +1,1 @@
+kubectl port-forward -n worker-system mysql-deploy-8575858499-65rjr 3306:3306

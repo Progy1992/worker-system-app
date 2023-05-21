@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-app
+  namespace: worker-system
+spec:
+  selector:
+    matchLabels:
+      app: worker-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: worker-app
+    spec:
+      containers:
+        - name: worker-app
+          image: harshrocks/worker-app
+          imagePullPolicy: Always
+
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: worker-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: worker-app
+  minReplicas: 2
+  maxReplicas: 5
+

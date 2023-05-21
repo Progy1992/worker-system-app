@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-manager
+  namespace: worker-system
+spec:
+  selector:
+    matchLabels:
+      app: worker-manager
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: worker-manager
+    spec:
+      containers:
+      - name: worker-manager
+        image: harshrocks/worker-manager
+        imagePullPolicy: Always

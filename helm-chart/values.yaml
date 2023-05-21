@@ -1,0 +1,27 @@
+namespace: worker-system
+
+mysql:
+  deployment:
+    name: mysql
+    replicas: 1
+
+worker-app:
+  deployment:
+    name: worker-app
+    label: worker-app
+    replicas: 2
+    image: harshrocks/worker-app
+
+autoscaling:
+  enabled: true
+  deployment:
+    name: worker-app-hpa
+    minReplicas: 2
+    maxReplicas: 20
+
+worker-manager:
+  deployment:
+    name: worker-manager
+    label: worker-manager
+    replicas: 1
+    image: harshrocks/worker-manager

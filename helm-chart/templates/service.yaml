@@ -1,0 +1,15 @@
+#Creating mysql-service which will be used for connecting to database
+#in worker-app and worker-manager
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: worker-system
+spec:
+  selector:
+    app: mysql
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306

@@ -1,0 +1,13 @@
+# Creating HPA for autoscaling of worker-app
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: worker-app-hpa
+  namespace: worker-system
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: worker-app
+  minReplicas: 2
+  maxReplicas: 20

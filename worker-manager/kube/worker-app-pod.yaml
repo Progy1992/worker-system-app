@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: worker-app
+  labels:
+    app: worker-app
+  namespace: worker-system
+  ownerReferences:
+    - apiVersion: apps/v1
+      kind: ReplicaSet
+      name: worker-app-c9f9d7db6
+      uid: ddc32436-c2a1-48a5-947d-a04a8410ab99
+      controller: true
+      blockOwnerDeletion: true
+
+spec:
+  containers:
+    - name: worker-app
+      image: harshrocks/worker-app
+      imagePullPolicy: Always
