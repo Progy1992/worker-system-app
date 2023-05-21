@@ -1,18 +1,24 @@
-# Steps to deploy the application using helm chart
-### `helm install worker-system worker`
+To deploy the application using a Helm chart, follow these steps:
 
-## There are four folders in this reposistory. Below is the brief introduction about this folder
-### 1. mysql-deploy :
-#### Here we have files related to the deployemtent of mysql-service in `worker-system` namespace. Also I have created a batch file for interacting with the cluster database locally using port forwadring on 3306 port
+1. Start by navigating to the root directory of the Helm chart repository.
 
-### 2. worker-app :
-#### Here we have files related to deploy the worker pod. Also have created a batch file whcih is responsible for build the image, pushing the image to docker registyr and deploying the changes on kubernetes Cluster. The pod shows the logs for thw assigned Ids to the respective running pod in the cluster and increments the value of the assigned ids by 1 every second.
+2. Open a terminal or command prompt and execute the following command to install the application using the Helm chart:
+   ```
+   helm install worker-system worker
+   ```
 
-### 3. worker-manager :
-#### Here we have code files for the worker-manager which acts as the master. Its main responsibility is for distributing the ids between active pods and performs scaling and de-scaling when the deployment size changes or wheen the ids are adeed or removed in the `values` table in the mysql-service database. Also have a batch file whuch oooms after image building, pushing the image to the docker repository and deploying the changes on cluster. The factor to decide where the pod is or not is deceided based on the amout of ids assigned to the pod. If the count is `20` then we can say that the pod is loaded and the further ids ara to be assigned to the orther running pods of added new pods if required.
+   This command will deploy the application named "worker" in the "worker-system" namespace.
 
-### 4. flask-api :
-#### Thsi application is developed for internal testing of the application by adding/ removing data from the database. Have used port forwarding inorder to the connect tomthe cluster database and perform necessay operations.
+3. Let's take a closer look at the four folders present in this repository:
 
-### 5. helm-chart :
-#### This folder has all the necessary files which will be used for deploying the application on kubernetes cluster
+   a. **mysql-deploy:** This folder contains files related to the deployment of the MySQL service in the "worker-system" namespace. Additionally, there is a batch file that allows local interaction with the cluster database using port forwarding on port 3306.
+
+   b. **worker-app:** Here, you'll find files related to deploying the worker pod. There is also a batch file responsible for building the image, pushing it to the Docker registry, and deploying the changes on the Kubernetes cluster. The worker pod displays logs for the assigned IDs and increments their values by 1 every second.
+
+   c. **worker-manager:** This folder contains code files for the worker manager, which acts as the master. Its main responsibility is to distribute IDs between active pods and perform scaling and de-scaling operations when the deployment size changes or when IDs are added or removed in the "values" table in the MySQL service database. There is also a batch file that handles image building, pushing it to the Docker repository, and deploying the changes on the cluster. The decision to assign IDs to a particular pod is based on the count of assigned IDs. For example, if the count is 20, we can consider the pod to be loaded, and further IDs will be assigned to other running pods or new pods if required.
+
+   d. **flask-api:** This application is developed for internal testing of the application by adding or removing data from the database. Port forwarding is used to connect to the cluster database and perform necessary operations.
+
+   e. **helm-chart:** This folder contains all the necessary files required for deploying the application on a Kubernetes cluster using Helm.
+
+By following these steps, you should be able to successfully deploy the application using the provided Helm chart.
