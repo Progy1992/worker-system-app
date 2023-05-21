@@ -1,15 +1,15 @@
-To deploy the application using a Helm chart, follow these steps:
+### To deploy the application using a Helm chart, follow these steps:
 
-1. Start by navigating to the root directory of the Helm chart repository.
+#### 1. Start by navigating to the root directory of the Helm chart repository.
 
-2. Open a terminal or command prompt and execute the following command to install the application using the Helm chart:
+#### 2. Open a terminal or command prompt and execute the following command to install the application using the Helm chart:
    ```
    helm install worker-system worker
    ```
 
    This command will deploy the application named "worker" in the "worker-system" namespace.
 
-3. Let's take a closer look at the four folders present in this repository:
+#### 3. Let's take a closer look at the four folders present in this repository:
 
    a. **mysql-deploy:** This folder contains files related to the deployment of the MySQL service in the "worker-system" namespace. Additionally, there is a batch file that allows local interaction with the cluster database using port forwarding on port 3306.
 
@@ -20,5 +20,3 @@ To deploy the application using a Helm chart, follow these steps:
    d. **flask-api:** This application is developed for internal testing of the application by adding or removing data from the database. Port forwarding is used to connect to the cluster database and perform necessary operations.
 
    e. **helm-chart:** This folder contains all the necessary files required for deploying the application on a Kubernetes cluster using Helm.
-
-By following these steps, you should be able to successfully deploy the application using the provided Helm chart.
