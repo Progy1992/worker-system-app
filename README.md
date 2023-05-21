@@ -4,7 +4,7 @@
 
 #### 2. Open a terminal or command prompt and execute the following command to install the application using the Helm chart:
    ```
-   helm install worker-system worker-system
+   helm install worker-system helm-chart
    ```
 
    This command will deploy the application named "worker-system" in the "worker-system" namespace on kubernetes cluster
